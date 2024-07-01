@@ -40,7 +40,5 @@ public class LoginComponents extends Page_factory{
 	public void getMessage(String expectedText) throws InterruptedException {
 		wait.waitForVisibility(toastMessage);
 		assertEquals(expectedText,toastMessage.getText());
-		Thread.sleep(4000);
-		System.out.println(toastMessage.getText());
 	}
 }
