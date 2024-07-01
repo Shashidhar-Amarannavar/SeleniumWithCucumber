@@ -17,6 +17,7 @@ public class BaseClass {
 
 	public BaseClass() throws IOException {
 		CommonHelper common = new CommonHelper();
+			
 	}
 	
 	@Before
