@@ -21,7 +21,7 @@ public class loginStep {
 	@Given("User launch the browser and hit the URL")
 	public void launch() throws InterruptedException {
 	    driver.get(CONSTANT.URL);
-	    Thread.sleep(5000);
+	    Thread.sleep(2000);
 	    
 	}
 
@@ -31,8 +31,8 @@ public class loginStep {
 	}
 
 	@Then("Verify {string}")
-	public void verifySuccessMessage(String string) {
-	   
+	public void verifySuccessMessage(String expectedText) throws InterruptedException {
+		loginComponents.getMessage(expectedText);
 	}
 
 }
