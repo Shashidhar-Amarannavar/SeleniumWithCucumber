@@ -10,21 +10,20 @@ import Utility.CommonHelper;
 import io.cucumber.java.en.*;
 
 public class loginStep {
-	
+
 	static WebDriver driver;
 	static LoginComponents loginComponents;
-	
+
 	public loginStep() throws IOException {
 		BaseClass b = new BaseClass();
 		driver = CommonHelper.driver;
 		loginComponents = new LoginComponents(driver);
 	}
-	
+
 	@Given("User launch the browser and hit the URL")
 	public void launch() throws InterruptedException {
-	    driver.get(CONSTANT.URL);
-	    Thread.sleep(2000);
-	    
+		driver.get(CONSTANT.URL);
+		Thread.sleep(2000);
 	}
 
 	@When("user is in login page and enter the email and password")
@@ -32,9 +31,23 @@ public class loginStep {
 		loginComponents.loginToApp();
 	}
 
-	@Then("Verify {string}")
-	public void verifySuccessMessage(String expectedText) throws InterruptedException {
+	@Then("Verify popup {string}")
+	public void verifySuccessMessage(String expectedText) {
 		loginComponents.getMessage(expectedText);
 	}
 
+	@When("user enter the {string} and {string}")
+	public void user_enter_the_and(String email, String password) {
+		loginComponents.loginToApp(email, password);
+	}
+
+	@When("user enter the wrong {string} and {string}")
+	public void user_enter_the_wrong_and(String email, String password) {
+		loginComponents.enterEmailAndPassword(email, password);
+	}
+
+	@Then("Verify the textfield validation {string}")
+	public void verify_the_textbox(String expectedText) {
+		loginComponents.validateMessage(expectedText);
+	}
 }
