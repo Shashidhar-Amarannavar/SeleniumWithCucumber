@@ -1,13 +1,11 @@
 package PageObject;
 
 import static org.junit.Assert.assertEquals;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import Utility.CONSTANT;
-import Utility.CommonHelper;
 import Utility.ExplicitWait;
 import Utility.Page_factory;
 
@@ -39,6 +37,9 @@ public class LoginComponents extends Page_factory {
 
 	@FindBy(xpath = "//label[text()='Password']/..//p/span")
 	WebElement passwordValidation;
+	
+	@FindBy(xpath = "//button[@title=\"Close\"]")
+	WebElement close;
 
 	public void loginToApp() {
 		wait.waitForVisibility(emailTextfield);
@@ -57,6 +58,7 @@ public class LoginComponents extends Page_factory {
 	public void getMessage(String expectedText) {
 		wait.waitForVisibility(toastMessage);
 		assertEquals(expectedText, toastMessage.getText());
+		close.click();
 	}
 
 	public void enterEmailAndPassword(String email, String password) {
