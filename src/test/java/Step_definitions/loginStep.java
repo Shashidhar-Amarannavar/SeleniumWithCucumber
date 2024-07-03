@@ -15,7 +15,6 @@ public class loginStep {
 	static LoginComponents loginComponents;
 
 	public loginStep() throws IOException {
-		BaseClass b = new BaseClass();
 		driver = CommonHelper.driver;
 		loginComponents = new LoginComponents(driver);
 	}

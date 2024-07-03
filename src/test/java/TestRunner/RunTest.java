@@ -5,7 +5,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "C:\\Users\\Softsuave\\git\\SeleniumWithCucumber\\Features\\LoginPage", glue = {
+@CucumberOptions(features = "C:\\Users\\Softsuave\\git\\SeleniumWithCucumber\\Features\\LoginPage\\signUp.feature", glue = {
 		"Step_definitions", "Base" }, monochrome = true, dryRun = false, plugin = { "pretty",
 				"html:target/cucumber-reports.html" })
 
