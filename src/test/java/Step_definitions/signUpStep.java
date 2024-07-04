@@ -7,22 +7,23 @@ import Utility.CommonHelper;
 import io.cucumber.java.en.*;
 
 public class signUpStep {
-	
+
 	static WebDriver driver;
 	static SignUpPageComponent signUp;
-	
-	public signUpStep(){
+
+	public signUpStep() {
 		driver = CommonHelper.driver;
 		signUp = new SignUpPageComponent(driver);
 	}
-	
+
 	@When("user in lagin page and click on signUp")
 	public void user_in_lagin_page_and_click_on_sign_up() {
 		signUp.signUpLink();
 	}
 
 	@When("enter {string},{string},{string},{string}, and {string}")
-	public void fill_the_fields(String emailId, String firstName, String lastName, String password, String confirmPassword) throws InterruptedException {
+	public void fill_the_fields(String emailId, String firstName, String lastName, String password,
+			String confirmPassword) throws InterruptedException {
 		signUp.fillTheFields(emailId, firstName, lastName, password, confirmPassword);
 	}
 
@@ -33,12 +34,17 @@ public class signUpStep {
 
 	@When("navigate to login page")
 	public void navigate_to_login_page() {
-	    driver.navigate().back();
+		driver.navigate().back();
 	}
-	
+
 	@Then("enter blank values in all textbox and verify the error message")
 	public void removeEnteredValues() throws InterruptedException {
 		signUp.clearEnteredValues();
+	}
+
+	@Then("enter invalid values in all textbox and verify the error message")
+	public void enter_invalid_values() throws InterruptedException {
+		signUp.verifyErrorMessage();
 	}
 
 }

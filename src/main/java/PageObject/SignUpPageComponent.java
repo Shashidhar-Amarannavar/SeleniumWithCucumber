@@ -70,14 +70,15 @@ public class SignUpPageComponent extends Page_factory {
 		signUp.click();
 	}
 
-	public void fillTheFields(String emailId, String firstName, String lastName, String password, String confirmPassword) {
+	public void fillTheFields(String emailId, String firstName, String lastName, String password,
+			String confirmPassword) {
 		emailIdTextfiled.sendKeys(DummyEmail + emailId);
 		firstNameTextfiled.sendKeys(firstName);
 		lastNameTextfiled.sendKeys(lastName);
 		passwordTextfiled.sendKeys(password);
 		confirmPasswordTextfiled.sendKeys(confirmPassword);
 	}
-	
+
 	public void clearEnteredValues() throws InterruptedException {
 		CommonHelper.clearTextbox(emailIdTextfiled);
 		assertEquals(emailTextbox.getText().stripTrailing(), "Please enter your email");
@@ -89,5 +90,14 @@ public class SignUpPageComponent extends Page_factory {
 		assertEquals(passwordTextbox.getText().stripTrailing(), "Please enter your password");
 		CommonHelper.clearTextbox(confirmPasswordTextfiled);
 		assertEquals(confirmPasswordTextbox.getText().stripTrailing(), "Please enter your confirm password");
+	}
+
+	public void verifyErrorMessage() {
+		assertEquals(emailTextbox.getText().stripTrailing(), "Please enter a valid email address");
+		assertEquals(firstNameTextbox.getText().stripTrailing(), "Please enter valid first name");
+		assertEquals(lastNameTextbox.getText().stripTrailing(), "Please enter valid last name");
+		assertEquals(passwordTextbox.getText().stripTrailing(),
+				"The password should include minimum 8 characters, 1 uppercase, 1 special character, 1 number, 1 lowercase");
+		assertEquals(confirmPasswordTextbox.getText().stripTrailing(), "Confirm password should match with password");
 	}
 }
