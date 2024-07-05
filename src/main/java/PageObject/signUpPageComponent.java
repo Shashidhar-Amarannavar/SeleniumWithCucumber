@@ -1,23 +1,21 @@
 package PageObject;
 
 import static org.junit.Assert.assertEquals;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.github.javafaker.Faker;
-
 import Utility.CommonHelper;
 import Utility.ExplicitWait;
 import Utility.Page_factory;
 
-public class SignUpPageComponent extends Page_factory {
+public class signUpPageComponent extends Page_factory {
 
 	public static WebDriver driver;
 	public static ExplicitWait wait;
 	public String DummyEmail;
 
-	public SignUpPageComponent(WebDriver driver) {
+	public signUpPageComponent(WebDriver driver) {
 		super(driver);
 		wait = new ExplicitWait(driver);
 	}

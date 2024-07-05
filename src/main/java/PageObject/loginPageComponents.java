@@ -1,21 +1,21 @@
 package PageObject;
 
 import static org.junit.Assert.assertEquals;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import Utility.CONSTANT;
+import Utility.CommonHelper;
 import Utility.ExplicitWait;
 import Utility.Page_factory;
 
-public class LoginComponents extends Page_factory {
+public class loginPageComponents extends Page_factory {
 
 	public static WebDriver driver;
 	public static ExplicitWait wait;
 	public static String actualText;
 
-	public LoginComponents(WebDriver driver) {
+	public loginPageComponents(WebDriver driver) {
 		super(driver);
 		wait = new ExplicitWait(driver);
 	}
@@ -40,6 +40,12 @@ public class LoginComponents extends Page_factory {
 	
 	@FindBy(xpath = "//button[@title=\"Close\"]")
 	WebElement close;
+	
+	@FindBy(xpath = "//a[text()='Forgot password?']")
+	WebElement forgotPassword;
+	
+	@FindBy(xpath = "//button[text()='Reset Password']")
+	WebElement ResetPasswordButton;
 
 	public void loginToApp() {
 		wait.waitForVisibility(emailTextfield);
@@ -64,8 +70,7 @@ public class LoginComponents extends Page_factory {
 	public void enterEmailAndPassword(String email, String password) {
 		if (email.isEmpty() && !password.isEmpty()) {
 			passwordTextfield.sendKeys(password);
-			passwordTextfield.sendKeys(Keys.CONTROL + "a");
-			passwordTextfield.sendKeys(Keys.BACK_SPACE);
+			CommonHelper.clearTextbox(passwordTextfield);
 			actualText = passwordValidation.getText().trim();
 		} else if (!email.isEmpty() && password.isEmpty()) {
 			emailTextfield.clear();
@@ -73,13 +78,32 @@ public class LoginComponents extends Page_factory {
 			actualText = emailValidation.getText().trim();
 		} else {
 			emailTextfield.sendKeys("passing null value");
-			emailTextfield.sendKeys(Keys.CONTROL + "a");
-			emailTextfield.sendKeys(Keys.BACK_SPACE);
+			CommonHelper.clearTextbox(emailTextfield);
 			actualText = emailValidation.getText().trim();
 		}
 	}
 
 	public void validateMessage(String expectedText) {
 		assertEquals(expectedText, actualText);
+	}
+	
+	public void clickOnForgotPassword(String email) {
+		wait.waitForVisibility(forgotPassword);
+		forgotPassword.click();
+		wait.waitForVisibility(emailTextfield);
+		emailTextfield.click();
+		emailTextfield.sendKeys(email);
+		CommonHelper.clearTextbox(emailTextfield);
+		emailTextfield.sendKeys(email);
+	}
+	
+	public void clickOnResetPassword() {
+		ResetPasswordButton.click();
+	}
+	
+	public void VerifyEmailValidation(String expectedText) {
+		wait.waitForVisibility(emailValidation);
+		String actualText = emailValidation.getText().stripTrailing();
+		assertEquals(actualText, expectedText);
 	}
 }

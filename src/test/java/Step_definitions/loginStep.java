@@ -2,9 +2,7 @@ package Step_definitions;
 
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
-
-import Base.BaseClass;
-import PageObject.LoginComponents;
+import PageObject.loginPageComponents;
 import Utility.CONSTANT;
 import Utility.CommonHelper;
 import io.cucumber.java.en.*;
@@ -12,11 +10,11 @@ import io.cucumber.java.en.*;
 public class loginStep {
 
 	static WebDriver driver;
-	static LoginComponents loginComponents;
+	static loginPageComponents loginComponents;
 
 	public loginStep() throws IOException {
 		driver = CommonHelper.driver;
-		loginComponents = new LoginComponents(driver);
+		loginComponents = new loginPageComponents(driver);
 	}
 
 	@Given("User launch the browser and hit the URL")

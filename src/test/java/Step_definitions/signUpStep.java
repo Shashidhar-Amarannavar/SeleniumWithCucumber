@@ -2,18 +2,18 @@ package Step_definitions;
 
 import org.openqa.selenium.WebDriver;
 
-import PageObject.SignUpPageComponent;
+import PageObject.signUpPageComponent;
 import Utility.CommonHelper;
 import io.cucumber.java.en.*;
 
 public class signUpStep {
 
 	static WebDriver driver;
-	static SignUpPageComponent signUp;
+	static signUpPageComponent signUp;
 
 	public signUpStep() {
 		driver = CommonHelper.driver;
-		signUp = new SignUpPageComponent(driver);
+		signUp = new signUpPageComponent(driver);
 	}
 
 	@When("user in lagin page and click on signUp")

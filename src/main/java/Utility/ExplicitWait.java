@@ -10,26 +10,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ExplicitWait {
 	public WebDriver driver;
-	public static WebDriverWait wt;
+	public static WebDriverWait wait;
 	
 	public ExplicitWait(WebDriver driver) {
 		this.driver = driver;
-		wt = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 	
 	public void waitForVisibility(WebElement element) {
-		wt.until(ExpectedConditions.visibilityOf(element));
+		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
 	public void waitForVisibility(By element) {
-		wt.until(ExpectedConditions.visibilityOfElementLocated(element));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
 	
 	public void waitForClickable(WebElement element) {
-		wt.until(ExpectedConditions.elementToBeClickable(element));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
 	public void waitForClickable(By element) {
-		wt.until(ExpectedConditions.elementToBeClickable(element));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 }

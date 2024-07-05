@@ -2,7 +2,6 @@ package Base;
 
 import java.io.IOException;
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import Utility.CONSTANT;
@@ -16,7 +15,7 @@ public class BaseClass {
 	public static WebDriver driver;
 
 	public BaseClass() throws IOException {
-		CommonHelper common = new CommonHelper();
+		new CommonHelper();
 			
 	}
 	

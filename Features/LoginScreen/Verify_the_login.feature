@@ -13,11 +13,11 @@ Feature: Login to the application
     Then Verify popup "<message>"
 
     Examples: 
-      | email                        | password     | message                        |
-      | shashi.amarannavar@soft.org  | valid#123    | Successfully logged in.        |
-      | shashi.amarannavar@soft.org  | invalid#1231 | Wrong password entered.        |
-      | shashi.amarannavar1@soft.org | valid#123    | No user found. Please sign up. |
-      | shashi.amarannavar1@soft.org | invalid#1231 | No user found. Please sign up. |
+      | email                         | password     | message                        |
+      | shashi.amarannavar@gmail.com  | valid#123    | Successfully logged in.        |
+      | shashi.amarannavar@gmail.com  | invalid#1231 | Wrong password entered.        |
+      | shashi.amarannavar1@gmail.com | valid#123    | No user found. Please sign up. |
+      | shashi.amarannavar1@gmail.com | invalid#1231 | No user found. Please sign up. |
 
   @loginScreen @validationEmailAndPassword
   Scenario Outline: Verify the email and password textbox validation message

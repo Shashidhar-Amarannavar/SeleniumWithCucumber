@@ -13,7 +13,7 @@ public class CommonHelper {
 	public static WebDriver driver;
 
 	public CommonHelper() throws IOException {
-		FileInputStream fis = new FileInputStream("C:\\Users\\Softsuave\\git\\SeleniumWithCucumber\\Resources\\testConfig.properties");
+		FileInputStream fis = new FileInputStream("C:\\Desktop\\Users\\SeleniumWithCucumber\\Resources\\testConfig.properties");
 		Properties prop = new Properties();
 		prop.load(fis);
 		CONSTANT.URL = prop.getProperty("url");

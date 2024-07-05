@@ -8,5 +8,4 @@ public class Page_factory {
 	public Page_factory(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
-
 }
