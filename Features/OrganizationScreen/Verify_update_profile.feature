@@ -5,7 +5,7 @@ Feature: Verify update profile page
     Given User launch the browser and hit the URL
     When user is in login page and enter the email and password
     Then Verify popup "<login success message>"
-    When update popup "<firstname>"
+    When update "<firstname>"
     Then Verify popup "<with update>"
     When click on update button without changing values
     Then Verify popup "<without update>"
