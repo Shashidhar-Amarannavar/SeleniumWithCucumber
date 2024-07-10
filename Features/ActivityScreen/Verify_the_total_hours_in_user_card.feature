@@ -11,5 +11,5 @@ Feature: Verify activity page
     Then Verify the total hours in the user card
 
     Examples: 
-      | login success message   | title    | organization  | user                   |
+      | login success message   | title    | organization | user                   |
       | Successfully logged in. | Activity | Real Testing | Shashidhar Amarannavar |
