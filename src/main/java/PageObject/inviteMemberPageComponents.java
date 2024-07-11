@@ -1,6 +1,7 @@
 package PageObject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -69,5 +70,26 @@ public class inviteMemberPageComponents extends Page_factory {
 			inviteButton.click();
 		}
 		inviteButton.click();
+	}
+	
+	public void deleteInvite(String emailId) {
+		wait.waitForVisibility(By.xpath("//td[text()='" + emailId + "']/../td//button"));
+		driver.findElement(By.xpath("//td[text()='" + emailId + "']/../td//button")).click();
+		removeInvitation.click();
+		yesButton.click();
+	}
+
+	public void reInvite(String emailId) {
+		try {
+			driver.findElement(By.xpath("//td[text()='" + emailId + "']")).isDisplayed();
+			wait.waitForVisibility(By.xpath("//td[text()='" + emailId + "']/../td//button"));
+			driver.findElement(By.xpath("//td[text()='" + emailId + "']/../td//button")).click();
+			reInviteButton.click();
+			yesButton.click();
+		} catch(NoSuchElementException e) {
+			selectFirstEmail.click();
+			reInviteButton.click();
+			yesButton.click();
+		}
 	}
 }
