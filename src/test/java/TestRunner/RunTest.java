@@ -10,5 +10,5 @@ import io.cucumber.junit.CucumberOptions;
 				"html:target/cucumber-reports.html" })
 
 public class RunTest {
-
+	
 }
